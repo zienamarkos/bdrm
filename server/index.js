@@ -29,7 +29,7 @@ const FileSchema = new mongoose.Schema({
     type: String,
     filePath: String,
     fileName: String,
-    uploadedAt: { type: Date, default: Date.now },
+    postedDate: { type: Date, default: Date.now },
 });
 
 const FileModel = mongoose.model('File', FileSchema);
@@ -60,6 +60,8 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
             type,
             filePath: req.file.path,
             fileName: filename,
+            
+            
         });
 
         // Save the file entry to the database
